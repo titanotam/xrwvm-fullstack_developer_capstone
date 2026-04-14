@@ -1,0 +1,109 @@
+<html>
+<head>
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="stylesheet" href="/static/bootstrap.min.css">
+  <style>
+    .contact-card {
+      width: 80%;
+      margin: auto;
+      margin-top: 5%;
+      border-radius: 30px;
+      padding: 30px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    .banner-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .contact-container {
+      display: flex;
+      margin-top: 30px;
+    }
+
+    .left-section {
+      width: 40%;
+      text-align: center;
+    }
+
+    .right-section {
+      width: 60%;
+      padding-left: 30px;
+      border-left: 2px solid #ccc;
+    }
+
+    .contact-text {
+      color: #3b6fcf;
+      font-weight: 500;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+<div>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color:darkturquoise; height: 1in;">
+    <div class="container-fluid">
+      <h2 style="padding-right: 5%;">Dealerships</h2>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link" style="font-size: larger;" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" style="font-size: larger;" href="/about">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" style="font-size: larger;" href="/contact">Contact Us</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Card -->
+  <div class="contact-card">
+
+    <!-- Banner -->
+    <div style="position: relative;">
+      <img src="/static/car_dealership.jpg" class="banner-img" alt="banner">
+    </div>
+
+    <hr>
+
+    <!-- Content -->
+    <div class="contact-container">
+      
+      <!-- Left Icon -->
+      <div class="left-section">
+        <img src="/static/contactus.png" width="150px" alt="contact icon">
+      </div>
+
+      <!-- Right Info -->
+      <div class="right-section contact-text">
+        <p><b>Contact Customer Service</b><br>support@bestcars.com</p>
+        
+        <p><b>Contact our National Advertising team</b><br>
+        NationalSales@bestcars.com</p>
+        
+        <p><b>Contact our Public Relations team</b><br>
+        PR@bestcars.com</p>
+        
+        <p><b>Contact the bestcars.com offices</b><br>
+        312-611-1111</p>
+        
+        <p><b>Become a bestcars.com car dealer</b><br>
+        Visit growwithbestcars.com</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+</body>
+</html>

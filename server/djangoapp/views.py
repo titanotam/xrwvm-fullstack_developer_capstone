@@ -95,16 +95,35 @@ def get_dealerships(request, state="All"):
 
 def get_dealer_reviews(request, dealer_id):
     # if dealer id has been provided
-    if(dealer_id):
-        endpoint = "/fetchReviews/dealer/"+str(dealer_id)
+    if dealer_id:
+        endpoint = "/fetchReviews/dealer/" + str(dealer_id)
         reviews = get_request(endpoint)
+
+        # handle case when API returns None or empty
+        if not reviews:
+            return JsonResponse({"status": 200, "reviews": []})
+
         for review_detail in reviews:
-            response = analyze_review_sentiments(review_detail['review'])
-            print(response)
-            review_detail['sentiment'] = response['sentiment']
-        return JsonResponse({"status":200,"reviews":reviews})
+            review_text = review_detail.get('review', '')
+
+            try:
+                response = analyze_review_sentiments(review_text)
+                print("Sentiment response:", response)
+
+                # safely extract sentiment
+                if response and isinstance(response, dict) and 'sentiment' in response:
+                    review_detail['sentiment'] = response['sentiment']
+                else:
+                    review_detail['sentiment'] = "neutral"
+
+            except Exception as e:
+                print("Error analyzing sentiment:", str(e))
+                review_detail['sentiment'] = "neutral"
+
+        return JsonResponse({"status": 200, "reviews": reviews})
+
     else:
-        return JsonResponse({"status":400,"message":"Bad Request"})
+        return JsonResponse({"status": 400, "message": "Bad Request"})
 
 def get_dealer_details(request, dealer_id):
     if(dealer_id):
